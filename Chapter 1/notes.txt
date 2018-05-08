@@ -8,3 +8,14 @@ rspec-mocks - makes it easy to isolate code you are testing from the rest of the
 Arrange/Act/Assert pattern - set up an object, do something with it, check it behaved the way wanted.
 
 describe, it and expect - the core APIs of RSpec
+
+RSpec hooks run automatically at specified times during testing
+Helper methods - regular ruby methods, you control when these run
+let construct initializes data on demand
+
+
+
+Hooks
+
+Will run automatically before each example. RSpec keeps track of all hooks you've registered.
+When RSpec is about to start running an example it will run any before hooks that apply.

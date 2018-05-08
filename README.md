@@ -1,3 +1,3 @@
 # RSpec
 
-Working through the effective testing ith RSpec3 book.
+Working through the effective testing with RSpec3 book.
