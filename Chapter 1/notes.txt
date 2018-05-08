@@ -1,0 +1,10 @@
+RSpec is made of 3 independant ruby gems:
+
+rspec-core - the overall test harness.
+rspec-expectations - provides readable, poweful syntax for checking properties of your code.
+rspec-mocks - makes it easy to isolate code you are testing from the rest of the system.
+
+
+Arrange/Act/Assert pattern - set up an object, do something with it, check it behaved the way wanted.
+
+describe, it and expect - the core APIs of RSpec
