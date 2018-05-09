@@ -71,3 +71,12 @@ You can also use skip in place of pening. Or you can use xit (similiar to fit) t
 You can use pending to Flag Errors in Third-Party Code, mark it with pending and the ticket ID from their bug tracker, ie:
 pending 'waiting for a fix or Hitchhikers's Guide bug #42'
 When you later update to a version containing the fix RSpec will let you know.
+
+
+Similiar to --only-failures we can use --next-failure to see one failing test at a time.
+
+The formatter has multiple outputs:
+-fp  - progress
+-fd  - documentation
+-fh  - html
+-fj  - json
