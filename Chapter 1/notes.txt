@@ -19,3 +19,27 @@ Hooks
 
 Will run automatically before each example. RSpec keeps track of all hooks you've registered.
 When RSpec is about to start running an example it will run any before hooks that apply.
+
+Hooks are good for running common setup code that has real world effects, such as clearing a test database before each example but does have some drawbacks.
+
+They work fine for stashing test objects as instance variables, but if you misspell the instance variable name ruby will silently return nil instead of aborting
+with a failure right away resulting in a confusing error message. Also when you initialize an instance variable in a before hook
+you pay the cost of that setup time for all examples in that group, even ones wich never use that instance variable which is inefficient and can be quite noticable
+when setting up large or expensive objects.
+
+
+Helper Methods
+
+RSpec is just plain ruby underneath, that means each example is a ruby class and we can define methods on it.
+
+Can be problematic if you are calling an object twice, each call will create a new instance. So in our sandwich example the sandwich we ad toppings to
+is different to the sandwich we check for toppings. A solution to this is to use memorisation where we store the results of an operation
+and refer to the stored copy from that point on. So we can use @sandwich = Sandwich.new('delicious', []). This also is
+problematic as it works by seeing if @sandwich is falsey before creating a new sandwich so won't work if we're trying to store
+something which is actually falsey. We can get around this using let.
+
+
+Sharing objects with let
+
+let is binding a name to the result of a computation. Like the helper method RSpec will run the block
+the first time any example calls the name.
