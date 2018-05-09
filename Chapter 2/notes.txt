@@ -45,3 +45,19 @@ Focusing specific examples
 If you are running the same subset of specs repeatedly you can mark them as focused. Simply add an f to the beginning of the RSpec method name.
 So context becomes fcontext, it becomes fit, describe becomes fdescribe.
 RSpec.config needs to be edited again to use this.
+this is shorthand for:
+context 'with milk', focus: true do
+
+Marking work in progress
+
+Although following BDD you will typically be working on getting one spec to pass at a time, it can be useful to sketch out several examples in a batch.
+We can support this workflow using pending examples. If you write an it example but do not complete it, ie:
+it 'does something'
+then RSpec will show these as pending tests
+
+Marking Incomplete Work
+
+It can be nice to mark some expectations as a work in progress before you commit so that you are never commiting a failing test suite. RSpec provides the pending method
+to help with this. You can mark a spec as pending  by adding the word pending anywhere in the test body and a description of why the test should pass yet. ie:
+pending ' not yet implemented'
+Location is important since any lines before the pending call will still be expected to pass so we typically add it to the top of the example.
