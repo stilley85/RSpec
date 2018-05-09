@@ -10,6 +10,10 @@ class Coffee
   def price
     1.00 + ingredients.size * 0.25
   end
+
+  def color
+    ingredients.include?(:milk) ? :light : :dark
+  end
 end
 
 RSpec.configure do |config|

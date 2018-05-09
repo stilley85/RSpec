@@ -61,3 +61,13 @@ It can be nice to mark some expectations as a work in progress before you commit
 to help with this. You can mark a spec as pending  by adding the word pending anywhere in the test body and a description of why the test should pass yet. ie:
 pending ' not yet implemented'
 Location is important since any lines before the pending call will still be expected to pass so we typically add it to the top of the example.
+
+Completing work in progress
+
+RSpec will let you know when tests marked as pending begin to pass. It will mark the test as failing rather than pending. When you remove the pending bit they will pass.
+
+You can also use skip in place of pening. Or you can use xit (similiar to fit) to skip an example instead of focusing it.
+
+You can use pending to Flag Errors in Third-Party Code, mark it with pending and the ticket ID from their bug tracker, ie:
+pending 'waiting for a fix or Hitchhikers's Guide bug #42'
+When you later update to a version containing the fix RSpec will let you know.
