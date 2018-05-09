@@ -31,7 +31,19 @@ RSpec.describe 'A cup of coffee' do
       expect(coffee.price).to eq(1.25)
     end
 
-    it 'is light in colour'
-    it 'is cooler than 200 degrees Fahrenheit'
+    # will display as pending
+
+    # it 'is light in colour'
+    # it 'is cooler than 200 degrees Fahrenheit'
+
+    it 'is light in colour' do
+      pending 'Colour not yet implemented'
+      expect(coffee.color).to be(:light)
+    end
+
+    it 'is cooler then 200 degrees Fahrenheit' do
+      pending 'Temperature not yet implemented'
+      expect(coffee.temperature).to be < 200.0
+    end
   end
 end
