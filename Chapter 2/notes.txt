@@ -1,0 +1,47 @@
+Customising specs output
+
+Context block - groups a set of examples and their setup code together with a common description. You can nest these as deeply as you want.
+Context is just an alias for describe, they can be used nterchangebly but context tends to be used for phrases that modify the object being tested.
+
+formatters - you can choose different formatters to tailor RSpecs output to your needs(ie: to output to HTML). Formattersunder the hood are plain ruby objects
+so you can write your own as you need. They can write data in any format and send the output anywhere (to console, a file, over a network etc...).
+
+RSpec comes with documentation formatter built in which lists specs outputs in an outline format using indentation to show grouping.
+
+
+
+Syntax highlighting
+
+You can use the CodeRay gem to colour-code the Ruby snippets in your specs output.
+
+
+Identifyng Slow Examples
+
+you can run rspec with the --profile flag and an optional number to see the slowest examples in our test suite.
+$ rspec --profile 2
+SO this would show the 2 slowest examples and how long they took to run.
+
+
+
+Running just what you need
+
+You can pass a list or file or directory to rspec to only run these examples rather than running your entire test suite every time. ie:
+rspec spec/unit
+will only run tests in the unit directory
+
+You can also run specific examples by name using the -e flag plus a search term. ie:
+rspec -e milk
+this will just run examples containing the word milk. These searches are case-sensitive.
+
+You can also run specific failures. If you pass a filename and line number seperated by a colon RSpec will run the example which starts on that line. ie:
+rspec ./spec/coffee_spec.rb:25
+Some IDEs can add a key binding for this to your text editor.
+
+There is also the --only-failures flag which  will run all failing tests. This requires some setup before you can use it though.
+RSpec needs a place to store info on wich examples are failing so it knows what to rerun. You supply this through RSpec.configure
+
+Focusing specific examples
+
+If you are running the same subset of specs repeatedly you can mark them as focused. Simply add an f to the beginning of the RSpec method name.
+So context becomes fcontext, it becomes fit, describe becomes fdescribe.
+RSpec.config needs to be edited again to use this.
