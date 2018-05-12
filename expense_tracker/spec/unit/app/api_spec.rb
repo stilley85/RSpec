@@ -80,8 +80,21 @@ module ExpenseTracker
       end
 
       context 'when there are no expenses on a given date' do
-        it 'returns an empty array as JSON'
-        it 'responds with a 200 (OK)'
+        before do
+          allow(ledger).to receive(:expenses_on)
+            .with('2017-08-11')
+            .and_return([])
+        end
+
+        it 'returns an empty array as JSON' do
+          get '/expenses/2017-08-11'
+          expect(parse_last_response).to eq([])
+        end
+
+        it 'responds with a 200 (OK)' do
+          get '/expenses/2017-08-11'
+          expect(last_response.status).to eq(200)
+        end
       end
     end
   end
